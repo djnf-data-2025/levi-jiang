@@ -59,11 +59,11 @@ library(rvest)
 #     clean_names()
 
 
-sherrill <- read.csv("data/sherrill_mikie_Cont_638821188859939969.csv") |> 
+sherrill <- read.csv("../data/sherrill_mikie_Cont_638821188859939969.csv") |> 
     clean_names() 
-sweeney <- read.csv("data/sweeney_stephen_Cont_638821191659704440.csv") |> 
+sweeney <- read.csv("../data/sweeney_stephen_Cont_638821191659704440.csv") |> 
     clean_names() 
-gottheimer <- read.csv("data/Gottheimer_Joshua_Cont_638821186179029147.csv") |> 
+gottheimer <- read.csv("../data/Gottheimer_Joshua_Cont_638821186179029147.csv") |> 
     clean_names() 
 ```
 
