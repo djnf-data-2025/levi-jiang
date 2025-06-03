@@ -1,109 +1,131 @@
 ---
-title: "Levi Jiang - Philly Inquirer"
+title: "Who is Fueling the 2025 New Jersey Governor Race?"
 output: html_document
-date: "2025-05-05"
+date: "2025-06-02"
 ---
 
-A demo notebook for Dow Jones News Fund data interns
+Levi Jiang
+lfjiang@uw.edu
 
-During the week’s training, you will work on a project called Investigate Your Community to produce detailed story pitches relevant to their summer internship positions. The goal is to have the students research a topic relevant to your newsroom so they can get to work immediately at the internship. 
+<b>What is the story: </b>
 
-Here are some examples from last year’s DJNF data journalism training:
+The 2025 election for New Jersey’s Governor is getting intense. The New York Times has described it as “The race features the largest field in decades. The candidates have never been more accomplished or better funded. The results could be a bellwether for midterm congressional elections.”  
 
-Hannah Rosenberger, at ASI Media/Counselor magazine, produced this analysis on name, image and likeness trends: https://hrosenberger.github.io/ASI-NIL-Project/
+New Jersey is one of only two states (another one is Virginia) that holds a governor election in the year following a presidential election. For Democrats, it could reveal if they are winning back New Jersey voters who shifted right in the 2024 election. This makes the election an indicator of the popularity of the current Trump administration and the midterm elections in 2026. 
 
-Shifra Dayak, an intern at the Connecticut Mirror, produced this analysis of environment spill data: https://shifradayak.github.io/DJNF_Merrill/ct_env_spills.html.
-
-Michael Zhang, an intern at the Houston Landing, explored local election data: https://michaelzhangreporter.github.io/Houston_Campaign_Finance/
+As the race heats up, my story will examine the source of each candidate's election funds, specifically, their donations. This article will disclose the identities of donors, and explore whether there are any patterns worth noting.
 
 
-Here's what your newsroom suggested for a project:
-I think in terms of topics, we are fairly open and were planning on having a conversation with Levi when they get here to figure out specific stories they will tackle. This is mostly because the desk here is general-assignment and more approach-driven, the stories Levi would work on would massively depend on their level of technical skills.
+<b>Why NOW: </b>
 
-That said, everything we do has to have a local angle. We cover Philadelphia and the adjoining counties (including those in New Jersey). I also know that Levi had a big interest in sports and over Levi's time here the Sixers should have a relatively high draft pick and we're planning on doing something like that. Some kind of simulated draft situation. Additionally we'll be in the thick of another Phillies season and have always wanted to do something around a team's odds of making it to the playoffs.
+On June 10th, Six Democrats and five Republicans will compete in the primary on June 10th for their party’s nomination, and the winners will advance to the final election in November. The primaries are bound to attract public attention, and this is the right time to inform readers about the candidates' campaign finances.
 
-Elsewhere we're going to be focused on the New Jersey Governor's race, the recently announced SEPTA service cuts, and how national politics are impacting Philadelphia.
 
-Sorry this isn't that specific but I hope that helps.
+<b>Target audience:</b>
 
-Sam Morris
-Interactives Editor
+1. New Jersey residents who want to know more about their governor candidates
+2. Election stakeholders (e.g., campaign staff, donors, potential donors)
+3. Politicians, political analysts, commentators, enthusiasts (especially national politicians to see if political trends change following the Democrats' wipeout in the 2024 elections)
 
-We start with campaign contribution data from the top three candidates in the Democratic primary for governor: Stephen Sweeney, Mikie Sherrill and Joshua Gottheimer
 
-https://www.njelecefilesearch.com/SummaryData?eid=466303
+<b>Potential impact:</b>
+We want to help the readers deepen their understanding of this election and each candidate, motivate more people to vote, and facilitate their decision-making.
 
-https://www.njelecefilesearch.com/searchcandidatereports
+
+<b>Questions I want to answer:</b>
+
+1. Who are the biggest donors to each candidate? How much did they donate? Where are they from? What industry do they work in? If we can find some connections between candidates and executives from health care corporations, union members etc, we can run deeper investigations on that.
+2. Do certain candidates receive more donations from specific industries because of their special political stances? (This can also be used to explore geographic disparities: are there candidates who see donation advantages in certain neighborhoods?)
+3. Are there out-state contributors making significant impacts on the election? (And also for in-state donors, we can use their zip to find some patterns.)
+
+
+<b>Data Visualization (according to the questions I pitched):</b>
+
+1. A chart to show everyone’s top 10 donors and their info
+2. A pie chart or bar chart to show which industries the donations come from.
+3. A US map to show which states the donations are from. For in-state donations, we can use a NJ State map and show the areas that donations are from based on zip codes.
+
+
+<b>Data Sources:</b>
+
+1. New Jersey ELEC Reports and Data Search System - candidate’s donation data (https://www.njelecefilesearch.com/searchcandidatereports)
+2. Ballot Pedia - Info of each candidate (https://ballotpedia.org/New_Jersey_gubernatorial_and_lieutenant_gubernatorial_election,_2025)
+3. New Jersey Globe - the latest headlines and results
+(https://newjerseyglobe.com/)
+
+
+<b>Previous Coverage:</b>
+
+There’s not so much data analysis about this election. The New York Times has an article about who the candidates are and their political stances: 
+(https://www.nytimes.com/2025/06/02/nyregion/new-jersey-governors-race-what-to-know.html)
+(https://www.nytimes.com/interactive/2025/03/21/nyregion/new-jersey-governor-candidates-issues.html)
+
+Politico also analyzed everyone’s advantages and disadvantages:
+(https://www.politico.com/interactives/2025/nj-governor-candidates-comparison-analysis/)
+
+Ballotpedia made a map of the results of New Jersey county Democratic Party conventions: 
+(https://datawrapper.dwcdn.net/Ho3TT/3/)
+
+
+<b>Other information:</b>
+
+At this point we know that there will be 11 candidates running for the Governor. Thoroughly analyzing all of them in a week will be difficult. Rob and I shared a great idea: analyze only the top five candidates in the polls. The idea of analyzing the rest of the candidates is the same as them, as is the visualization process. 
+
+According to the newest Emerson College Polling/PIX11/The Hill survey, the top 5 candidates are: Mikie Sherrill(D), Jack Ciattarelli(R), Bill Spadea(R), Steven Fulop(D), and Ras Baraka(D).
+
 
 
 # Load software libraries
 ```{r}
+
 #install.packages("tidyverse")
 #install.packages("janitor")
 #install.packages("readxl")
 #install.packages("rvest")
+#install.packages("dplyr")
 library(tidyverse)
 library(janitor)
 library(readxl)
 library(rvest)
+library(dplyr)
+
 ```
 
 
-# Load your data
-
-
+# Load data
 ```{r}
-# YOUR_DATA <- read.csv("../data/XXXXX.csv") |> 
-#     clean_names()
-# data <- read_excel("../data/2024-12-Revenue.xlsx", skip=2) |> 
-#     clean_names()
-
 
 sherrill <- read.csv("../data/sherrill_mikie_Cont_638821188859939969.csv") |> 
     clean_names() 
 sweeney <- read.csv("../data/sweeney_stephen_Cont_638821191659704440.csv") |> 
     clean_names() 
-gottheimer <- read.csv("../data/Gottheimer_Joshua_Cont_638821186179029147.csv") |> 
-    clean_names() 
-```
-
-combine all three
-
-```{r}
-
-combo <- rbind(gottheimer, sherrill, sweeney)
 
 
 ```
 
 Data details:
 
-
 # Explore the data types
 ```{r}
 
-#glimpse(YOUR_DATA)
-
-glimpse(combo)
+combo <- rbind(sherrill, sweeney)
+glimpse(sherrill)
 
 ```
 # Fix dates
 ```{r}
-combo <- combo |> 
-  mutate(date = lubridate::mdy(contribution_date))
 sherrill <- sherrill |> 
   mutate(date = lubridate::mdy(contribution_date))
 sweeney <- sweeney |> 
   mutate(date = lubridate::mdy(contribution_date))
-gottheimer <- gottheimer |> 
-  mutate(date = lubridate::mdy(contribution_date))
 ```
-
 
 
 # Data exploration: totals by candidate
 
 ```{r}
+combo <- rbind(sherrill, sweeney)
+
 combo |> 
   select(entity_name, contribution_amount) |> 
   group_by(entity_name) |> 
@@ -111,22 +133,130 @@ combo |>
   arrange(desc(total))
 ```
 
-
-
+So we can see 
 
 # Questions --------------------------------------------------------------------
 
 Write down questions you want answered:
 
-1. How many/much in-state and out-state donations everyone has?
- - 1.1 Sherrill
+First of all we need to clean the dataset. The original spreadsheet mix the individual donors and organizations, so we need to create an id for each donor. Also, some donors made more than one donation or changes the amount of money, then we need to figure out the exact numbers.
+
+```{r}
+# Data Clean Up
+
+# Step 1: Create a donor ID (individual name or organization name)
+sherrill_donations_clean <- sherrill %>%
+  mutate(
+    donor_id = case_when(
+      !is.na(first_name) & first_name != "" &
+      !is.na(last_name) & last_name != "" ~ str_trim(paste(first_name, last_name)),
+      !is.na(non_ind_name) & non_ind_name != "" ~ str_trim(non_ind_name),
+      TRUE ~ "Unknown"
+    )
+  )
+
+# Step 2: Group by donor_id and sum up all contribution_amount
+sherrill_donor_totals <- sherrill_donations_clean %>%
+  group_by(donor_id) %>%
+  summarise(final_donation = sum(contribution_amount, na.rm = TRUE), .groups = "drop")
+
+# Step 3: Merge the final total back to the original dataset
+sherrill_donations_with_total <- sherrill_donations_clean %>%
+  left_join(sherrill_donor_totals, by = "donor_id")
+
+# Step 4: Select relevant columns from the original data
+sherrill_donor_details <- sherrill_donations_with_total %>%
+  select(
+    donor_id, final_donation, is_individual, date,
+    street, city, state, zip,
+    emp_name, emp_street, emp_city, emp_state, emp_zip,
+    occupation_name, contributor_type
+  )
+
+# Step 5: Keep only the newest row for each donor based on date
+# Convert date to proper Date type if it's not already
+sherrill_donor_details <- sherrill_donor_details %>%
+  mutate(date = as.Date(date))
+
+sherrill_latest_details <- sherrill_donor_details %>%
+  arrange(donor_id, desc(date)) %>%
+  group_by(donor_id) %>%
+  slice(1) %>%  # Keep only the newest record
+  ungroup()
+
+
+# So as for other candidates
+
+sweeney_donations_clean <- sweeney %>%
+  mutate(
+    donor_id = case_when(
+      !is.na(first_name) & first_name != "" &
+      !is.na(last_name) & last_name != "" ~ str_trim(paste(first_name, last_name)),
+      !is.na(non_ind_name) & non_ind_name != "" ~ str_trim(non_ind_name),
+      TRUE ~ "Unknown"
+    )
+  )
+
+sweeney_donor_totals <- sweeney_donations_clean %>%
+  group_by(donor_id) %>%
+  summarise(final_donation = sum(contribution_amount, na.rm = TRUE), .groups = "drop")
+
+sweeney_donations_with_total <- sweeney_donations_clean %>%
+  left_join(sweeney_donor_totals, by = "donor_id")
+
+sweeney_donor_details <- sweeney_donations_with_total %>%
+  select(
+    donor_id, final_donation, is_individual, date,
+    street, city, state, zip,
+    emp_name, emp_street, emp_city, emp_state, emp_zip,
+    occupation_name, contributor_type
+  )
+
+sweeney_donor_details <- sweeney_donor_details %>%
+  mutate(date = as.Date(date))
+
+sweeney_latest_details <- sweeney_donor_details %>%
+  arrange(donor_id, desc(date)) %>%
+  group_by(donor_id) %>%
+  slice(1) %>%  # Keep only the newest record
+  ungroup()
+
+
+```
+
+<b>Q1: Who are the biggest donors to each candidate? How much did they donate? Where are they from? What industry do they work in? (If we can find some connections between candidates and executives from health care corporations, union members etc, we can run deeper investigations on that.)</b>
+
+So for candidate Mikie Sherrill:
+
 ```{r}
 
-top_donors_sherrill <- sherrill %>%
-  group_by(first_name, last_name, non_ind_name) %>%
-  summarise(Total = sum(contribution_amount), .groups = "drop") %>%
-  arrange(desc(Total)) %>%
-  head(20)
+sherrill_top_donations <- sherrill_latest_details %>%
+  arrange(desc(final_donation)) %>%
+  slice_head(n = 200)
+print(sherrill_top_donations)
+
+```
+ 
+ As we can see, the money they donated are all the same, so it's hard to tell who's the "biggest" boss. We can partly sort them out by whether they are individual or not. 
+ (What does a journalist usually do when this happens?)
+ 
+```{r}
+
+sweeney_top_donations <- sweeney_latest_details %>%
+  arrange(desc(final_donation)) %>%
+  slice_head(n = 200)
+print(sherrill_top_donations)
+
+```
+
+```{r}
+
+sweeney_top_donations <- sweeney_latest_details %>%
+  arrange(desc(final_donation)) %>%
+  slice_head(n = 200)
+print(sherrill_top_donations)
+
+```
 
 donations_money_by_state_sherrill <- sherrill %>%
   group_by(state) %>%
@@ -138,16 +268,10 @@ donations_amount_by_state_sherrill <- sherrill %>%
   summarise(Count = n(), .groups = "drop") %>%
   arrange(desc(Count))
 
-```
- 
- - 1.2 Sweeney
-```{r}
 
-top_donors_sherrill <- sherrill %>%
-  group_by(first_name, last_name, non_ind_name) %>%
-  summarise(Total = sum(contribution_amount), .groups = "drop") %>%
-  arrange(desc(Total)) %>%
-  head(20)
+
+
+
 
 donations_money_by_state_sherrill <- sherrill %>%
   group_by(state) %>%
@@ -158,100 +282,6 @@ donations_amount_by_state_sherrill <- sherrill %>%
   group_by(state) %>%
   summarise(Count = n(), .groups = "drop") %>%
   arrange(desc(Count))
-```
 
 
 
-
-
-
-
-
-
-
-
-# Data Details
-
-You'll want to get results of the county democratic conventions. 
-https://datawrapper.dwcdn.net/Ho3TT/3/
-I contacted Ballotpedia for the source. https://ballotpedia.org/Contact_us
-And they provided these details:
-Ballotpedia Editor <editor@ballotpedia.org>
-12:35 AM (6 hours ago)
-to me
-
-Hi Rob,
-
-
-
-Thank you for reaching out! I’ve checked with our editors, and they’ve provided a list of the following sources we used for the referenced graphic:
-
-
-
-Atlantic: https://newjerseyglobe.com/campaigns/sweeney-wins-atlantic-county-convention/
-
-Bergen: https://newjerseyglobe.com/governor/gottheimer-scores-massive-win-at-bergen-democratic-convention/
-
-Burlington: https://newjerseyglobe.com/governor/sweeney-wins-burlington-democratic-convention/
-
-Camden: https://newjerseyglobe.com/local/camden-democrats-back-sweeney-shuffle-county-commissioner-slate/
-
-Cape May: https://newjerseyglobe.com/governor/cape-may-democrats-wont-take-sides-in-governors-race/
-
-Cumberland: https://newjerseyglobe.com/governor/sweeney-wins-cumberland-endorsement/
-
-Essex: https://newjerseyglobe.com/governor/sherrill-wins-essex-democratic-convention/
-
-Gloucester: https://newjerseyglobe.com/governor/sweeney-wins-gloucester-dem-convention-unanimously/
-
-Hudson: https://newjerseyglobe.com/governor/hudson-democrats-flip-from-gottheimer-to-sherrill-in-governors-race/
-
-Hunterdon: https://newjerseyglobe.com/governor/sherrill-wins-hunterdon-county-democratic-convention/
-
-Mercer: https://newjerseyglobe.com/governor/sherrill-wins-mercer-democratic-convention-with-56/
-
-Middlesex: https://newjerseyglobe.com/governor/sherrill-wins-gargantuan-victory-in-middlesex/
-
-Monmouth: https://newjerseyglobe.com/governor/sherrill-wins-monmouth-convention/
-
-Morris: https://newjerseyglobe.com/governor/sherrill-wins-morris-democratic-convention-by-wide-margin/
-
-Ocean: https://newjerseyglobe.com/governor/governors-race-no-winner-on-ocean-county/
-
-Passaic: https://newjerseyglobe.com/governor/sherrill-wins-passaic-dem-endorsement-in-bid-for-governor/
-
-Salem: https://newjerseyglobe.com/governor/sweeney-wins-salem-county-democratic-convention-in-landslide/
-
-Somerset: https://newjerseyglobe.com/local/five-of-six-candidates-for-governor-may-use-somerset-dem-slogan/
-
-Sussex: https://newjerseyglobe.com/governor/sherrill-wins-sussex-democratic-convention/
-
-Union: https://newjerseyglobe.com/campaigns/onyema-defeats-tucker-to-win-union-county-dem-endorsement-sherrill-wins-union-county/ 
-
-Warren: https://newjerseyglobe.com/governor/gottheimer-wins-big-at-warren-dem-convention/
-
-
-Please let me know if you have any further questions. We appreciate you being a reader!
-
-
-
-Best,
-
-Nathaniel
-
-
- 
---
-
-Ballotpedia The Encyclopedia of American Politics
-8383 Greenway Blvd., Suite 600
-Middleton, WI 53562
-
-More on New Jersey governor's race
-https://ballotpedia.org/New_Jersey_gubernatorial_and_lieutenant_gubernatorial_election,_2025_(June_10_Democratic_primary)
-
-https://www.realclearpolling.com/stories/analysis/exclusive-new-jersey-gubernatorial-republican-primary-poll
-
-
-Sports:
-Derek Willis, one of the data instructors, is strong on sports data. You should speak to him about the Phillies and Sixers story ideas. Something to start with: https://sports.betmgm.com/en/blog/mlb/phillies-playoff-odds-bracket-seed-bm23/
