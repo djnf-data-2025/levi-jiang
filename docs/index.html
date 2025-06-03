@@ -438,8 +438,8 @@ difficult. Rob and I shared a great idea: analyze only the top five
 candidates in the polls. The idea of analyzing the rest of the
 candidates is the same as them, as is the visualization process.</p>
 <p>According to the newest Emerson College Polling/PIX11/The Hill
-survey, the top 5 candidates are: Mikie Sherrill(D), Jack
-Ciattarelli(R), Bill Spadea(R), Steven Fulop(D), and Ras Baraka(D).</p>
+survey, the top 5 candidates are: Mikie Sherrill (D), Jack Ciattarelli
+(R), Bill Spadea (R), Steven Fulop (D), and Ras Baraka (D).</p>
 <div id="load-software-libraries" class="section level1">
 <h1>Load software libraries</h1>
 <pre class="r"><code>#install.packages(&quot;tidyverse&quot;)
@@ -654,7 +654,7 @@ they are individual or not. (What does a journalist usually do when this
 happens?)</p>
 <pre class="r"><code>sweeney_top_donations &lt;- sweeney_latest_details %&gt;%
   arrange(desc(final_donation)) %&gt;%
-  slice_head(n = 200)
+  slice_head(n = 20)
 print(sherrill_top_donations)</code></pre>
 <pre><code>## # A tibble: 200 × 15
 ##    donor_id     final_donation is_individual date       street city  state   zip

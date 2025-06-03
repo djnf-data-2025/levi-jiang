@@ -71,7 +71,7 @@ Ballotpedia made a map of the results of New Jersey county Democratic Party conv
 
 At this point we know that there will be 11 candidates running for the Governor. Thoroughly analyzing all of them in a week will be difficult. Rob and I shared a great idea: analyze only the top five candidates in the polls. The idea of analyzing the rest of the candidates is the same as them, as is the visualization process. 
 
-According to the newest Emerson College Polling/PIX11/The Hill survey, the top 5 candidates are: Mikie Sherrill(D), Jack Ciattarelli(R), Bill Spadea(R), Steven Fulop(D), and Ras Baraka(D).
+According to the newest Emerson College Polling/PIX11/The Hill survey, the top 5 candidates are: Mikie Sherrill (D), Jack Ciattarelli (R), Bill Spadea (R), Steven Fulop (D), and Ras Baraka (D).
 
 
 
@@ -244,7 +244,7 @@ print(sherrill_top_donations)
 
 sweeney_top_donations <- sweeney_latest_details %>%
   arrange(desc(final_donation)) %>%
-  slice_head(n = 200)
+  slice_head(n = 20)
 print(sherrill_top_donations)
 
 ```
