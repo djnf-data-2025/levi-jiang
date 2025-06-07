@@ -89,10 +89,12 @@ The New Jersey Election Law Enforcement Commission has the record of every candi
 </div>
 <br>
 
+
+<!--
 # Data Details
 <br>
 <b>Load software libraries</b>
-```{r}
+```{r, echo=FALSE}
 
 #install.packages("tidyverse")
 #install.packages("janitor")
@@ -108,7 +110,7 @@ library(dplyr)
 ```
 
 <b>Load data</b>
-```{r}
+```{r, echo=FALSE}
 
 sherrill <- read.csv("../data/sherrill_mikie_Cont_638821188859939969.csv") |> 
     clean_names() 
@@ -129,7 +131,7 @@ The data set has very detailed information of all the donations each candidate r
 <br>
 
 <b>Fix dates</b>
-```{r}
+```{r, echo=FALSE}
 combo <- combo |> 
   mutate(date = lubridate::mdy(contribution_date))
 sherrill <- sherrill |> 
@@ -246,12 +248,13 @@ ciattarelli_latest_details <- ciattarelli_donor_details %>%
 
 
 ```
-<br>
+<br>-->
+
 <b>Q1: Who are the biggest donors for each candidate? How much did they donate? (If we can find some connections between candidates and executives from health care corporations, union members etc, we can run deeper investigations on that.)</b>
 
 For candidate Mikie Sherrill:
 
-```{r}
+```{r, echo=FALSE}
 
 sherrill_top_donations <- sherrill_latest_details %>%
   arrange(desc(final_donation)) %>%
@@ -270,7 +273,7 @@ We can also make a table of these donors:<br><br>
 
 And for candidate Jack Ciattarelli:
  
-```{r}
+```{r, echo=FALSE}
 
 ciattarelli_top_donations <- ciattarelli_latest_details %>%
   arrange(desc(final_donation)) %>%
@@ -311,7 +314,7 @@ What we do know is for every donor, they need to let ELEC know their occupations
 
 For Sherrill:
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 
 donations_money_by_occupation_sherrill <- sherrill_latest_details %>%
   group_by(occupation_name) %>%
@@ -327,7 +330,7 @@ print(donations_money_by_occupation_sherrill)
 </div><br>
 
 For Ciattarelli:
-```{r}
+```{r, echo=FALSE, results='hide'}
 
 donations_money_by_occupation_ciattarelli <- ciattarelli_latest_details %>%
   group_by(occupation_name) %>%
@@ -354,7 +357,7 @@ So we can see a clear difference here. The largest number of contributors to She
 
 For Mikie Sherrill:
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 
 donations_money_by_state_sherrill <- sherrill_latest_details %>%
   group_by(state) %>%
@@ -376,7 +379,7 @@ print(donations_money_by_state_sherrill)
 For Jack Ciattarelli:
 
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 
 donations_money_by_state_ciattarelli <- ciattarelli_latest_details %>%
   group_by(state) %>%
@@ -397,7 +400,7 @@ print(donations_money_by_state_ciattarelli)
 
 We can also check the number of donors for each state:
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 donations_amount_by_state_sherrill <- sherrill_latest_details %>%
   group_by(state) %>%
   summarise(Count = n(), .groups = "drop") %>%
@@ -413,7 +416,7 @@ However, in this article, the number of out-state contributors are relatively sm
 For in-state donors, their zip codes are available in the dataset, so we can analyze the donations in the area corresponding to the zip code.
 
 For Mikie Sherrill:
-```{r}
+```{r, echo=FALSE, results='hide'}
 
 in_state_donations_sherrill <- sherrill_latest_details %>%
   filter(state == "NJ") %>%
@@ -437,7 +440,7 @@ Zip code 07043, which means the Upper Montclair area, has the most donations.The
 <br><br>
 
 For Jack Ciattarelli:
-```{r}
+```{r, echo=FALSE, results='hide'}
 
 in_state_donations_ciattarelli <- ciattarelli_latest_details %>%
   filter(state == "NJ") %>%
